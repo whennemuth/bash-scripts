@@ -1,0 +1,9 @@
+# ignore root files
+/*
+# ignore root directories
+/*/
+
+# except...
+!.gitignore
+!.bashrc
+!bash.scripts/
