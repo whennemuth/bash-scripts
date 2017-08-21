@@ -24,6 +24,8 @@ alias jenkins='ssh -i  ~/.ssh/buaws-kuali-rsa wrh@10.57.236.6'
 alias qa='ssh -i ~/.ssh/buaws-kuali-rsa wrh@10.57.236.244'
 alias staging1='ssh -i ~/.ssh/buaws-kuali-rsa wrh@10.57.236.68'
 alias staging2='ssh -i ~/.ssh/buaws-kuali-rsa wrh@10.57.236.100'
+alias mydevbox='ssh -i ~/.ssh/buaws-kuali-rsa-warren ec2-user@10.57.237.89'
+alias mydevboxtunnel='ssh -i ~/.ssh/buaws-kuali-rsa-warren -N -v -L 8080:10.57.237.89:8080 -L 1043:10.57.237.89:1043 ec2-user@10.57.237.89'
 
 alias scpsandbox='echo "Enter path to the file to upload and press [ENTER]: " ; read file ; eval "scp -C -i ~/.ssh/buaws-kuali-rsa $file wrh@10.57.237.84:~/dockerbuild/"'
 
@@ -73,3 +75,4 @@ alias coeus.webapp.build='cd /c/whennemuth/workspaces/kuali_workspace/kuali-rese
 alias coeus.webapp='cd /c/whennemuth/workspaces/kuali_workspace/kuali-research/coeus-webapp'
 alias coeus.impl='cd /c/whennemuth/workspaces/kuali_workspace/kuali-research/coeus-impl'
 alias git.bash.scripts='git_ssh ~ github_id_rsa github whennemuth/bash-scripts.git'
+alias notes='vim /c/whennemuth/documentation/bu/linux/expressions.txt'
