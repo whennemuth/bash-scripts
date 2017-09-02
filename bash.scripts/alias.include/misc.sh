@@ -10,14 +10,14 @@ findAndOpenInVim(){
 convertToWindowsPath() {
   local drive='s/\/c\//c:\\/gi'
   local slash='s/\//\\/gi'
-  
+
   if [ -n "$2" ] ; then  
-    sed -i $drive $1
-    sed -i $slash $1
+    sed -i $drive "$1"
+    sed -i $slash "$1"
   else 
-    local temp=$(echo -n $1 | sed $drive)
-    temp=$(echo -n $temp | sed $slash)
-    echo -n $temp
+    local temp=$(echo -n "$1" | sed $drive)
+    temp=$(echo -n "$temp" | sed $slash)
+    echo -n "$temp"
   fi
 }
 
@@ -31,12 +31,12 @@ convertToUnixPath() {
   local drive='s/c:\\/\/c\//gi'
   local slash='s/\\/\//gi'
   
-  if [ -n "$2" ] ; then  
-    sed -i $drive $1
-    sed -i $slash $1
-  else 
-    local temp=$(echo -n $1 | sed $drive)
-    temp=$(echo -n $temp | sed $slash)
-    echo -n $temp
+  if [ -n "$2" ] ; then 
+    sed -i $drive "$1"
+    sed -i $slash "$1"
+  else
+    local temp=$(echo -n "$1" | sed $drive)
+    temp=$(echo -n "$temp" | sed $slash)
+    echo -n "$temp"
   fi
 }

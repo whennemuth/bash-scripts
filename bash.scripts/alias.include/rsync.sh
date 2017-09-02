@@ -42,3 +42,19 @@ syncimpl() {
     /c/whennemuth/workspaces/kuali_workspace_remote/kuali-research/coeus-impl/src/main/ \
     ec2-user@10.57.237.89:/opt/kuali/kc/coeus-impl/src/main/
 }
+
+# "Pull" the upstream target directory (except for the war file) to the local project.
+syncImplTargetDir() {
+  local VERSION="$1"
+  if [ -z "$VERSION" ] ; then
+    echo "ERROR! No version provided to syncImplTargetDir! Cancelling rsync"
+    return 1
+  fi
+
+  rsync \
+    -chavxP \
+    --exclude *.war \
+    -e "ssh -i ~/.ssh/buaws-kuali-rsa-warren -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
+    ec2-user@10.57.237.89:/opt/kuali/kc/coeus-webapp/target/coeus-webapp-$VERSION/ \
+    /c/whennemuth/workspaces/kuali_workspace_remote/kuali-research/coeus-webapp/target/coeus-webapp-$VERSION/
+}
