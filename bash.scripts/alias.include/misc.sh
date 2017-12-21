@@ -40,3 +40,20 @@ convertToUnixPath() {
     echo -n "$temp"
   fi
 }
+
+grepNode() {
+  local switches="$1"
+  local expression="$2"
+  [ -z "$expression" ] && echo "No search term provided" && return 1
+  [ -z "$switches" ] && switches="-r"
+  [ -z "$(echo -n $switches | grep -o '-')" ] && switches="-$switches"
+  # read -p "Type an expression to search for: " expression; 
+  grep $switches \
+    --exclude-dir={node_modules,dist,build,test} \
+    --exclude=*.bundle.js \
+    --exclude=bundle.js \
+    --exclude=*.min.js \
+    --exclude=*.min.js.* \
+    --exclude=*.map \
+   "$expression" .
+}
