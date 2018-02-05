@@ -95,3 +95,5 @@ alias githelloworld='git_ssh /c/whennemuth/workspaces/bu_workspace/hello-world g
 alias gitsyncusers='git_ssh /c/sync-users bu_github_id_kualiui_rsa bu bu-ist/sync-users.git'
 alias kc='cd /c/whennemuth/workspaces/kuali_workspace_remote/kuali-research; ls -la'
 alias todo='vim /c/whennemuth/scrap/todo.txt'
+alias bashlib='vim /c/whennemuth/kuali-research-docker/bash.lib.sh'
+alias sourcebashlib='source /c/whennemuth/kuali-research-docker/bash.lib.sh'
