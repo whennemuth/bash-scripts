@@ -125,6 +125,28 @@ stackaction() {
    echo "INVALID/MISSING stack action parameter required."
 }
 
+ecsMetaRefresh() {
+  local instanceId=$(aws cloudformation describe-stack-resources \
+    --stack-name ECS-EC2-test \
+    --logical-resource-id MyEC2Instance \
+    | jq '.StackResources[0].PhysicalResourceId' \
+    | sed 's/"//g')
+
+  echo "instanceId = $instanceId"
+
+  printf "Enter the name of the configset to run: "
+  read configset
+  # NOTE: The following does not seem to work properly:
+  #       --parameters commands="/opt/aws/bin/cfn-init -v --configsets $configset --region "us-east-1" --stack "ECS-EC2-test" --resource MyEC2Instance"
+  # Could be a windows thing, or could be a complexity of using bash to execute python over through SSM.
+  aws ssm send-command \
+    --instance-ids "${instanceId}" \
+    --document-name "AWS-RunShellScript" \
+    --comment "Implementing cloud formation metadata changes on ec2 instance MyEC2Instance ($instanceId)" \
+    --parameters \
+    '{"commands":["/opt/aws/bin/cfn-init -v --configsets '"$configset"' --region \"us-east-1\" --stack \"ECS-EC2-test\" --resource MyEC2Instance"]}'
+}
+
 updateIam() {
   ecsupload test/iam_for_kuali.template
   aws \

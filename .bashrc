@@ -139,3 +139,7 @@ alias apache="cd /c/whennemuth/kuali-research-docker/apache-shib/build.context &
 alias prodcoretunnel='ssh -i ~/.ssh/buaws-kuali-rsa -N -v -L 9229:10.57.242.100:9229 wrh@10.57.242.100'
 alias stagecoretunnel='ssh -i ~/.ssh/buaws-kuali-rsa -N -v -L 9229:10.57.236.68:9229 wrh@10.57.236.68'
 alias presnotes='vim /c/whennemuth/scrap/ecs.presentation.notes.txt'
+alias mongo='/c/Program\ files/MongoDB/Server/4.0/bin/mongo.exe'
+alias mongod='/c/Program\ files/MongoDB/Server/4.0/bin/mongod.exe'
+alias mongodump='/c/Program\ files/MongoDB/Server/4.0/bin/mongodump.exe'
+
