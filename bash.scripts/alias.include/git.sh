@@ -9,6 +9,6 @@ git_ssh(){
   ssh-add ~/.ssh/$2
   ssh -T git@github.com
   if [ -z "$(git remote | grep -P ^$3\$)" ] ; then
-    git remote add github git@github.com:$4
+    git remote add $3 git@github.com:$4
   fi
 }

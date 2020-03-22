@@ -4,7 +4,7 @@ for line in $(find ~/bash.scripts/alias.include -type f -iname '*.sh') ; do
 done
 alias scripts='vim ~/bash.scripts/alias.include/misc.sh'
 
-S3(){ cd /c/whennemuth/scrap/s3/docker/$1/$2 && ls -la; }
+s3(){ cd /c/whennemuth/scrap/s3/$1/$2 && ls -la; }
 
 # The AWS toolkit extension for Visual studio 2017 targets .net 4.0, which is not installed on this computer.
 # Therefore any project created with this extension cannot be reloaded when anything happens to cause a reload.
@@ -28,7 +28,11 @@ alias gittest2='git_ssh /c/gittest2 gittest_rsa_key github whennemuth/gittest.gi
 alias gitkc='git_ssh /c/whennemuth/workspaces/kuali_workspace/kuali-research github_id_rsa github bu-ist/kuali-research.git'
 alias gitkcremote='git_ssh /c/whennemuth/workspaces/kuali_workspace_remote/kuali-research github_id_rsa github bu-ist/kuali-research.git'
 alias gitkualiui='git_ssh /c/kuali-ui bu_github_id_kualiui_rsa bu bu-ist/kuali-ui.git'
-alias gitdocker='git_ssh /c/whennemuth/kuali-research-docker github_id_rsa bu-ist/kuali-research-docker.git'
+alias gitdocker='git_ssh \
+  /c/whennemuth/kuali-research-docker \
+  github_id_rsa \
+  github \
+  bu-ist/kuali-research-docker.git'
 alias gitcloudformation='git_ssh /c/whennemuth/workspaces/ecs_workspace/cloud-formation/kuali bu_github_id_kuali_cloudformation_rsa bu-ist/kuali-cloudformation.git'
 alias cfn='cd /c/whennemuth/workspaces/ecs_workspace/cloud-formation/kuali; ls -la'
 alias bye='eval `ssh-agent -k` && exit'
@@ -138,8 +142,33 @@ alias dockermounts="docker inspect -f \"{{json .Mounts}}\" kuali-research | jq"
 alias apache="cd /c/whennemuth/kuali-research-docker/apache-shib/build.context && ls -la"
 alias prodcoretunnel='ssh -i ~/.ssh/buaws-kuali-rsa -N -v -L 9229:10.57.242.100:9229 wrh@10.57.242.100'
 alias stagecoretunnel='ssh -i ~/.ssh/buaws-kuali-rsa -N -v -L 9229:10.57.236.68:9229 wrh@10.57.236.68'
+alias stageportaltunnel='ssh -i ~/.ssh/buaws-kuali-rsa -N -v -L 9228:10.57.236.68:9228 wrh@10.57.236.68'
 alias presnotes='vim /c/whennemuth/scrap/ecs.presentation.notes.txt'
 alias mongo='/c/Program\ files/MongoDB/Server/4.0/bin/mongo.exe'
 alias mongod='/c/Program\ files/MongoDB/Server/4.0/bin/mongod.exe'
 alias mongodump='/c/Program\ files/MongoDB/Server/4.0/bin/mongodump.exe'
 
+alias apps='start chrome "file:///C:/whennemuth/documentation/bu/apps.htm"'
+alias wpcron='ssh ist-wp-cmd-te1.bu.edu'
+alias startmydevbox='aws ec2 start-instances --instance-ids i-0f0f920848adfa906'
+alias stopmydevbox='aws ec2 stop-instances --instance-ids i-0f0f920848adfa906'
+alias wpbuild='ssh wrh@ist-wp-bld-pr01'
+alias wptest1='ssh webteam@ist-wp-app-test101.bu.edu'
+alias wptest2='ssh webteam@ist-wp-app-test102.bu.edu'
+alias wpdev='ssh -i ~/.ssh/webteam_rsa webteam@ist-wp-app-devl101.bu.edu'
+alias docs='cd /c/whennemuth/documentation/bu && ls -la'
+alias wpcronlogs='MSYS_NO_PATHCONV=1 aws logs --profile=wpcron describe-log-streams --log-group-name=/wordpress/cron/test/job-output'
+alias vscode='alias | grep vscode'
+alias vscodecore='code --folder-uri "file:///c:/kuali/cor-main"'
+alias vscodeportal='code --folder-uri "file:///c:/kuali/research-portal"'
+alias vscoderest='code --folder-uri "file:///c:/whennemuth/documentation/bu/kuali"'
+alias vscodecfn='code --folder-uri "file:///c:/whennemuth/workspaces/ecs_workspace/cloud-formation/kuali"'
+alias vscodekrd='code --folder-uri "file:///c:/whennemuth/kuali-research-docker"'
+alias vscodewpcron='code --folder-uri "file:///c:/whennemuth/workspaces/bu_workspace/bu-wordpress-cron"'
+alias vscodemongo='code --folder-uri "file:///c:/whennemuth/documentation/bu/mongo/script"'
+alias vscodeconfig='code --folder-uri "file:///c:/whennemuth/scrap/s3"'
+alias vscodekc='code --folder-uri "file:///c:/kuali/kc"'
+alias vscodewebdiff='code --folder-uri "file:///c:/whennemuth/workspaces/bu_workspace/bu-webdiff"'
+alias vscodevisreg='code --folder-uri "file:///c:/whennemuth/workspaces/bu_workspace/bu-visual-regression"'
+alias vscodedummymetrics='code --folder-uri "file:///c:/whennemuth/workspaces/ecs_workspace/dummy-metrics"'
+alias wpdbtest1='ssh -i ~/.ssh/warren_ist_wp_db_test01_rsa wrh@ist-wp-db-test01.bu.edu'
